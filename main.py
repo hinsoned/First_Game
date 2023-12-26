@@ -15,8 +15,9 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
 BORDER = pygame.Rect(WIDTH//2 -5, 0, 10, HEIGHT )
-
-HEALTH_FONT = pygame.font.SysFont("Arial", 40, bold = True, italic= False)
+ 
+HEALTH_FONT = pygame.font.SysFont('Arial', 40, bold = True, italic= False)
+WINNER_FONT = pygame.font.SysFont('Arial', 100, bold = True, italic= True)
 
 #This is to control how quickly the game updates the screen
 FPS = 60
@@ -99,6 +100,11 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
         elif bullet.x < 0:
             red_bullets.remove(bullet)
 
+def draw_winner(text):
+    draw_text = WINNER_FONT.render(text, 1, WHITE)
+    WIN.blit(draw_text, (WIDTH//2 - draw_text.get_width//2, HEIGHT//2 - draw_text.get_height//2))
+    pygame.display.update()
+    pygame.time.delay(5000)
 
 def main():
     red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
@@ -142,7 +148,8 @@ def main():
             winner_text = "Red Wins!"
 
         if winner_text != "":
-            pass #someone won
+            draw_winner(winner_text)
+            break
 
         #print(red_bullets, yellow_bullets)
         keys_pressed = pygame.key.get_pressed()
