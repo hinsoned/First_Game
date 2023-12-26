@@ -102,7 +102,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
 
 def draw_winner(text):
     draw_text = WINNER_FONT.render(text, 1, WHITE)
-    WIN.blit(draw_text, (WIDTH//2 - draw_text.get_width//2, HEIGHT//2 - draw_text.get_height//2))
+    WIN.blit(draw_text, (WIDTH//2 - draw_text.get_width()//2, HEIGHT//2 - draw_text.get_height()//2))
     pygame.display.update()
     pygame.time.delay(5000)
 
@@ -124,6 +124,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                pygame.quit()
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL and len(yellow_bullets) < MAX_BULLETS:
@@ -160,7 +161,9 @@ def main():
                 
         draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health)
 
-    pygame.quit()
+    #When the game is over you can 
+    #pygame.quit()
+    main()
 
 if __name__ == "__main__":
     main()
