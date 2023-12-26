@@ -111,6 +111,10 @@ def draw_winner(text):
     pygame.time.delay(5000)
 
 def main():
+
+    pygame.mixer.music.load('Assets/TATT (PSM)PM2 JPWM1.mp3')
+    pygame.mixer.music.play(-1)
+    
     red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     yellow = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
 
